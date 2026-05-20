@@ -7,7 +7,7 @@ from datetime import datetime
 from torchvision.utils import save_image
 
 from loralut_dataset import ImageDatasetFiveK
-from model_cuda_lut import LoraLUT
+from model import LoraLUT
 from loss import Loss
 
 
