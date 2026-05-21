@@ -105,33 +105,16 @@ class LoraLUT(nn.Module):
         self.bxy2 = nn.Linear(64, 3 * 3 * 16)
         self.bxy3 = nn.Linear(64, 3 * 3 * 16)
 
-        self.rgb1.weight.data *= 0.001
-        self.rgb1.bias.data *= 0.001
-        self.rgb2.weight.data *= 0.001
-        self.rgb2.bias.data *= 0.001
-        self.rgb3.weight.data *= 0.001
-        self.rgb3.bias.data *= 0.001
+        lut_layers = [
+            self.rgb1, self.rgb2, self.rgb3,
+            self.rxy1, self.rxy2, self.rxy3,
+            self.gxy1, self.gxy2, self.gxy3,
+            self.bxy1, self.bxy2, self.bxy3,
+        ]
 
-        self.rxy1.weight.data *= 0.001
-        self.rxy1.bias.data *= 0.001
-        self.rxy2.weight.data *= 0.001
-        self.rxy2.bias.data *= 0.001
-        self.rxy3.weight.data *= 0.001
-        self.rxy3.bias.data *= 0.001
-
-        self.gxy1.weight.data *= 0.001
-        self.gxy1.bias.data *= 0.001
-        self.gxy2.weight.data *= 0.001
-        self.gxy2.bias.data *= 0.001
-        self.gxy3.weight.data *= 0.001
-        self.gxy3.bias.data *= 0.001
-
-        self.bxy1.weight.data *= 0.001
-        self.bxy1.bias.data *= 0.001
-        self.bxy2.weight.data *= 0.001
-        self.bxy2.bias.data *= 0.001
-        self.bxy3.weight.data *= 0.001
-        self.bxy3.bias.data *= 0.001
+        for layer in lut_layers:
+            layer.weight.data *= 0.001
+            layer.bias.data *= 0.001
 
         self.apply_rgb_lut = apply_rgb_lut
 
