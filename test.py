@@ -6,7 +6,7 @@ import torch
 from torchvision.utils import save_image
 
 
-model_path = "./checkpoints_cuda_lut/exp_20260521_160822/model/model_epoch_197.pth"
+model_path = "./model_epoch_197.pth"
 output_dir = "./output"
 os.makedirs(output_dir, exist_ok=True)
 device = torch.device("cuda:0")
